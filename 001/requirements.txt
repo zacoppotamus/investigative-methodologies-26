@@ -1,0 +1,10 @@
+geopandas
+mercantile
+requests
+rasterio
+pillow
+roboflow
+inference
+supervision
+opencv-python
+shapely

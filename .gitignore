@@ -1,1 +1,107 @@
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv
+.conda/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Logs
+*.log
+logs/
+
+# Project-specific: Satellite imagery outputs
+# Students will create these folders with downloaded tiles and detections
+**/tiles/
+**/detections/
+*/tiles/
+*/detections/
+
+# Project-specific: Common output folder names
+Barcelona*/
+Madrid*/
+*_Pools/
+*_pools/
+output/
+outputs/
+data/downloads/
+
+# Project-specific: Large data files
+*.tif
+*.tiff
+*.jpg
+*.jpeg
+*.png
+!**/example*.jpg
+!**/example*.png
+
+# Project-specific: Model files
+*.onnx
+*.pt
+*.pth
+*.h5
+*.pb
+*.pkl
+*.pickle
+
+# Project-specific: Temporary GeoJSON files
+temp*.geojson
+test*.geojson
+*_temp.geojson
+
+# Claude Code
+.claude/settings.local.json
+.claude/plans/
