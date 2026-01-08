@@ -40,7 +40,20 @@ conda activate iaac-001
 
 You need a GeoJSON file containing polygon(s) that define your area of interest.
 
-### Option A: Export from QGIS
+### Option A: Use geojson.io (Easiest - No Software Required)
+
+1. Go to **https://geojson.io/**
+2. In the map view, use the drawing tools on the right side:
+   - Click the **polygon tool** (rectangle icon)
+   - Click on the map to draw your area of interest
+   - Close the polygon by clicking on the first point
+3. The GeoJSON will automatically appear in the right panel
+4. Click **Save** → **GeoJSON** to download as `map.geojson`
+5. Rename the file to something descriptive (e.g., `barcelona_area.geojson`)
+
+**Tip:** Use the search box to find your location, then draw your polygon. You can draw multiple polygons if needed.
+
+### Option B: Export from QGIS
 
 1. Open QGIS
 2. Create a new temporary scratch layer: **Layer → Create Layer → New Temporary Scratch Layer**
@@ -52,7 +65,7 @@ You need a GeoJSON file containing polygon(s) that define your area of interest.
    - CRS: **EPSG:4326 - WGS 84**
    - Save as: `my_area.geojson`
 
-### Option B: Use the Interactive Map (Colab Notebook)
+### Option C: Use the Interactive Map (Colab Notebook)
 
 If you prefer the interactive Leaflet map from the original notebook:
 1. Open `001_bulk_img_download_and_detect.ipynb` in Google Colab

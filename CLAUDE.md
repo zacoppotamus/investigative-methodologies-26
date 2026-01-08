@@ -162,7 +162,7 @@ python satellite_detection.py \
 ```
 
 **Common workflow for students:**
-1. Create bounding box polygons in QGIS and export as GeoJSON
+1. Create bounding box polygons using geojson.io (https://geojson.io/) or QGIS and export as GeoJSON
 2. Run download mode to fetch tiles: `--mode download --geojson area.geojson`
 3. Review downloaded tiles
 4. Run detection mode with different confidence thresholds: `--mode detect --confidence 0.1`

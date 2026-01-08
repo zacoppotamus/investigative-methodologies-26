@@ -276,7 +276,7 @@ Module-level constants:
   - Quick reference table
   - Comparison to notebook workflow
 
-**2026-01-09 - Code improvements:**
+**2026-01-09 - Code improvements (logging):**
 - Added proper logging throughout satellite_detection.py
   - Configured logging in main() with timestamps and level indicators
   - Replaced all print() statements with appropriate logger calls
@@ -285,3 +285,28 @@ Module-level constants:
   - ERROR level for fatal errors before sys.exit()
 - Removed unnecessary import (json was unused)
 - Log format: `%(asctime)s - %(levelname)s - %(message)s`
+
+**2026-01-09 - Output visibility improvements:**
+- Fixed logging configuration to ensure terminal output:
+  - Added explicit `stream=sys.stdout` to logging config
+  - Added `force=True` to override any existing logging configs
+  - Configured module logger with `logger.setLevel(logging.INFO)`
+  - Enabled line buffering with `sys.stdout.reconfigure(line_buffering=True)`
+- Progress reporting improvements:
+  - Progress updates every 5 tiles/images (was 10)
+  - Percentage completion displayed in progress messages
+  - Immediate feedback for images with detections
+- Output format improvements:
+  - Clear section headers with banners
+  - Real-time progress: `Progress: 15/153 tiles (9%)`
+  - Detection feedback: `[5/20] filename.jpg - 3 detection(s)`
+  - Summary statistics at end of each pipeline
+- Removed duplicate print statements after verifying logger works correctly
+
+**2026-01-09 - Documentation improvements:**
+- Added geojson.io (https://geojson.io/) as primary method for creating GeoJSON files:
+  - Updated 001/README.md to include geojson.io as Option A (easiest method)
+  - No software installation required, web-based interface
+  - Included step-by-step instructions for drawing polygons
+  - Reordered options: geojson.io → QGIS → Colab notebook
+- Updated CLAUDE.md to mention geojson.io in student workflow

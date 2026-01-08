@@ -243,8 +243,11 @@ def download_tiles_pipeline(
             })
 
             downloaded += 1
-            if downloaded % 10 == 0 or downloaded == total_tiles:
-                logger.info(f"Progress: {downloaded}/{total_tiles} tiles")
+            # More frequent progress updates (every 5 tiles or at completion)
+            if downloaded % 5 == 0 or downloaded == total_tiles:
+                progress_pct = (downloaded * 100) // total_tiles if total_tiles > 0 else 0
+                progress_msg = f"Progress: {downloaded}/{total_tiles} tiles ({progress_pct}%)"
+                logger.info(progress_msg)
 
     # Save metadata as GeoJSON
     metadata_gdf = gpd.GeoDataFrame(metadata_list, crs="EPSG:4326")
@@ -336,11 +339,12 @@ def run_detection_pipeline(
             num_detections = len(detections)
             total_detections += num_detections
 
-            if num_detections > 0:
-                logger.info(f"{filename}: {num_detections} detection(s)")
-
-            if processed % 10 == 0:
-                logger.info(f"Progress: {processed}/{len(tile_images)} images")
+            # Show progress more frequently (every image with detections, or every 5 images)
+            if num_detections > 0 or processed % 5 == 0:
+                msg = f"[{processed}/{len(tile_images)}] {filename}"
+                if num_detections > 0:
+                    msg += f" - {num_detections} detection(s)"
+                logger.info(msg)
 
         except Exception as e:
             logger.error(f"Error processing {filename}: {e}")
@@ -460,12 +464,21 @@ Examples:
 
 def main() -> None:
     """Main entry point."""
-    # Configure logging
+    # Configure logging with explicit stdout and force refresh
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
-        datefmt='%Y-%m-%d %H:%M:%S'
+        datefmt='%Y-%m-%d %H:%M:%S',
+        stream=sys.stdout,  # Explicitly use stdout
+        force=True  # Override any existing config
     )
+
+    # Configure module logger
+    logger.setLevel(logging.INFO)
+
+    # Ensure line buffering for immediate output
+    if hasattr(sys.stdout, 'reconfigure'):
+        sys.stdout.reconfigure(line_buffering=True)
 
     args = parse_args()
 
