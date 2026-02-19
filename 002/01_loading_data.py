@@ -18,8 +18,8 @@ Data: Barcelona districts (10) and neighborhoods (73) from bcn-geodata.
 # --- Google Colab Setup ---
 # If running in Google Colab, uncomment and run these lines first:
 # !pip install geopandas
-# !git clone https://github.com/zacharias1219/IAAC.git
-# %cd IAAC/002
+# !git clone https://github.com/zacoppotamus/investigative-methodologies-26
+# %cd investigative-methodologies-26/002
 # ---
 
 from pathlib import Path
