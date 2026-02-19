@@ -105,3 +105,8 @@ test*.geojson
 # Claude Code
 .claude/settings.local.json
 .claude/plans/
+
+!002/outputs/
+!002/outputs/*.png
+
+cache/
