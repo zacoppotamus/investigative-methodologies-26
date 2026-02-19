@@ -18,6 +18,13 @@ Data: Barcelona neighborhoods + OSM parks and metro stations.
 NOTE: This script requires internet access to download OSM data.
 """
 
+# --- Google Colab Setup ---
+# If running in Google Colab, uncomment and run these lines first:
+# !pip install geopandas osmnx
+# !git clone https://github.com/zacharias1219/IAAC.git
+# %cd IAAC/002
+# ---
+
 from pathlib import Path
 import geopandas as gpd
 import matplotlib.pyplot as plt
@@ -26,8 +33,12 @@ import warnings
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
-DATA_DIR = Path(__file__).parent / "data"
-OUTPUT_DIR = Path(__file__).parent / "outputs"
+try:
+    BASE_DIR = Path(__file__).parent
+except NameError:
+    BASE_DIR = Path.cwd()  # Colab: use current working directory
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 # Load and project neighborhoods to UTM for metric operations

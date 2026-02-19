@@ -14,6 +14,13 @@ Key concepts:
 Data: Barcelona neighborhoods + computed attributes.
 """
 
+# --- Google Colab Setup ---
+# If running in Google Colab, uncomment and run these lines first:
+# !pip install geopandas folium mapclassify
+# !git clone https://github.com/zacharias1219/IAAC.git
+# %cd IAAC/002
+# ---
+
 from pathlib import Path
 import geopandas as gpd
 import matplotlib.pyplot as plt
@@ -21,8 +28,12 @@ import matplotlib.patheffects as pe
 import numpy as np
 import folium
 
-DATA_DIR = Path(__file__).parent / "data"
-OUTPUT_DIR = Path(__file__).parent / "outputs"
+try:
+    BASE_DIR = Path(__file__).parent
+except NameError:
+    BASE_DIR = Path.cwd()  # Colab: use current working directory
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 # Load data
